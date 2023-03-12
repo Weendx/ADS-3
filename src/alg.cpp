@@ -6,14 +6,14 @@ int fbinsearch(int const *arr, const int &size, const int &key) {
         return -1;
     if (key == arr[size / 2]) {
         int cur = size / 2;
-        while (cur > -1 && arr[cur--] == key);
+        while (cur > -1 && arr[cur--] == key) {}
         ++cur;
         return cur;
     }
     if (key < arr[size / 2])
         return fbinsearch(arr, size / 2, key);
-    int tmp = binsearch(arr + size / 2, size / 2 + size % 2, key);
-    if (tmp != -1) 
+    int tmp = fbinsearch(arr + size / 2, size / 2 + size % 2, key);
+    if (tmp != -1)
         return tmp + size / 2;
     else
         return tmp;
@@ -31,5 +31,5 @@ int cbinsearch(int *arr, int size, int value) {
             ++valueCount;
     }
 
-    return valueCount; // если ничего не найдено
+    return valueCount;
 }
